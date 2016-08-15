@@ -1,46 +1,65 @@
-# Search & Replace Filters:
-_Assumes that there's a filter making all URIs lowercase first_
+# Admin Filters:
+
+* _Admin filters to clean up the madness that is Convio URLs._
+* _Assumes that there's also a filter (listed before these) making all URIs lowercase first_
+
 ## 1. Exclude sessions with donation form previews:  
-_(for admin users that aren't already excluded via IP address, ie vendors)_
+_(to exclude donation form previews from admin users that aren't already excluded via IP address, ie vendors)_
 
-**Exclude:**
+### Exclude:
 
-  Filter Field: Request URI
+  * Filter Field: Request URI
 
-  Filter Pattern:
+  * Filter Pattern:
 
-    (donation2preview)|(\?df_preview=)
+        (donation2preview)|(\?df_preview=)
 
 ## 2. Clean up and consolidate donation completed URL:
-  **Search:**
+  ### Search & Replace:
 
-    donation=completed(&.*)$
+  * Search:
 
-  **Replace:**
+        donation=completed(&.*)$
 
-    donation=completed/
+  * Replace:
+
+        donation=completed/
 
   **(&.*)$** - Looks for an ampersand plus any characters to the end of the URL ($)
 
 ## 3. Remove session ID:
-  **Search & Replace with nothing:**
+### Search & Replace:
 
-    (\&|\?)idb=(\d{7,}|\[\[s76:idb\]\])
+* Search:
+
+      (\&|\?)idb=(\d{7,}|\[\[s76:idb\]\])
+
+* Replace:
+
+      [leave empty]
 
 ## 4. Remove session ID in ecommerce:  
-  **Search:**
+### Search & Replace:
 
-    (E|e)commercecheckout/\d{6,}\?
+* Search:
 
-  **Replace:**
+      (E|e)commercecheckout/\d{6,}\?
 
-    ecommercecheckout/
+* Replace:
+
+      ecommercecheckout/
 
   Replaces a numeric string of 6+ characters between ecommercecheckout/ and whatever follows it
 
 ## 5. Remove Paypal string
-  **Search & Replace with nothing: **
+### Search & Replace:
 
-    \&extproc=paypal(.+)$
+* Search:
+
+      \&extproc=paypal(.+)$
+
+* Replace:
+
+      [leave empty]
 
   This captures everything from _&extproc=paypal_ to the end of the URL
