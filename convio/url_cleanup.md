@@ -63,3 +63,23 @@ _(to exclude donation form previews from admin users that aren't already exclude
       [leave empty]
 
   This captures everything from _&extproc=paypal_ to the end of the URL
+<<<<<<< HEAD
+
+## 6. Remove session ID from ecommerce checkout pages, and rewrite to be consistent with ecommercecheckout: 
+
+* Search:
+
+      /donation/(\d*)\?dpage=
+
+* Replace:
+
+      /ecommercecheckout/
+
+* Examples:
+
+  /kpbs/site/donation/930330988?dpage=donate  ➙   /kpbs/site/ecommercecheckout/donate
+  /kpbs/site/donation/930330988?dpage=confirm  ➙ /kpbs/site/ecommercecheckout/confirm
+
+* Note: changed to /kpbs/site/ecommercecheckout/ in order to maintain the funnel in content drilldown.
+=======
+>>>>>>> parent of 931d3df... added another session ID URL pattern
