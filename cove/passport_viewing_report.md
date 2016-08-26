@@ -7,13 +7,13 @@ I usually have at least four different worksheets in my Google Sheet:
   1. *Data* - where the raw data from Google Analytics is imported.
     - In this example, I'm calling the worksheet `MonthDataSheet`
 
-  - *Cleaned-up Data* - where I query the raw data, and run it through various formulas to clean up messiness and extract the program and episode names.
+  2. *Cleaned-up Data* - where I query the raw data, and run it through various formulas to clean up messiness and extract the program and episode names.
     - Example worksheet name: `MonthCleanedSheet`
 
-  - *Programs* - where I use pivot tables to summarize total views of the programs.
+  3. *Programs* - where I use pivot tables to summarize total views of the programs.
     - Example worksheet name: `ProgramsPivotSheet`
 
-  - *Episodes* - where I use pivot tables to summarize total views of the episodes by program.
+  4. *Episodes* - where I use pivot tables to summarize total views of the episodes by program.
     - Example worksheet name: `EpisodesPivotSheet`
 
 
@@ -25,7 +25,7 @@ I usually have at least four different worksheets in my Google Sheet:
 
   - In this example, I assume you'll just set the date parameters in Google Analytics or Supermetrics; I don't go into breaking things out by month or week or year. I assume you'll just pull the data, for instance, for the past month.
 
-- **Settings:**
+2. **Settings:**
 
   - Google Analytics Add-On:
 
@@ -40,14 +40,14 @@ I usually have at least four different worksheets in my Google Sheet:
     - Split by (rows): `EventLabel`
     - Filters: `Event Category contains MVOD AND Event Action equals MediaStart`
 
-- **Columns:**
+3. **Columns:**
 
   - In Column A, pull in the *Event Label*. This is the program and episode information. Here's an example:
     >The Great British Baking Show | Season 2, Episode 1: Cakes | 2365541690 | Episode
 
   - In Column B, pull in *Total Events*. This is equivalent to the number of times a Passport (MVOD) video was started.
 
-- **Named Range:**
+4. **Named Range:**
 
   - I like to name my data ranges to make them easier to reference in formulas.  
 
@@ -67,7 +67,7 @@ I usually have at least four different worksheets in my Google Sheet:
     ```
   - This will essentially duplicate the data from your original sheet into this sheet. I like to keep the cleaned-up data separate from the original data: if you put the clean-up formulas on the same sheet as the raw data, future runs of the data can end up overwriting the formulas.  
 
-- **Column C: Clean-up Formula**
+2. **Column C: Clean-up Formula**
 
   - Insert this formula into Cell C2:
 
@@ -86,7 +86,7 @@ I usually have at least four different worksheets in my Google Sheet:
       ```  
   - Copy and paste this formula down to the last row.
 
-- **Columns D and E: Split Out Program Name and Episode Title**
+3. **Columns D and E: Split Out Program Name and Episode Title**
 
   - Name Column D `Program` and Column E `Episode`. You may also want to name Column F `Episode 2`, as this is where some additional information about episodes may end up.
 
@@ -102,9 +102,9 @@ I usually have at least four different worksheets in my Google Sheet:
 
 1. Select all your data in `MonthCleanedSheet`.
 
-- Go to *Menu: Data > Pivot table...*
+2. Go to *Menu: Data > Pivot table...*
 
-- Set up your pivot table:
+3. Set up your pivot table:
 
   - Rows: Group by `Program`
     - Order: Descending
@@ -112,15 +112,15 @@ I usually have at least four different worksheets in my Google Sheet:
   - Values: Display `Total events`
     - Summarize by: SUM
 
-- Name this sheet `ProgramsPivotSheet`
+4. Name this sheet `ProgramsPivotSheet`
 
 ### 4. Pivot Table: `EpisodesPivotSheet`
 
 1. Select all your data in `MonthCleanedSheet`.
 
-- Go to *Menu: Data > Pivot table...*
+2. Go to *Menu: Data > Pivot table...*
 
-- Set up your pivot table:
+3. Set up your pivot table:
 
   - Rows:
     - Group by `Program`
@@ -133,4 +133,4 @@ I usually have at least four different worksheets in my Google Sheet:
   - Values: Display `Total events`
     - Summarize by: SUM
 
-- Name this sheet `EpisodesPivotSheet`
+4. Name this sheet `EpisodesPivotSheet`
