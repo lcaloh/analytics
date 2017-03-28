@@ -1,2 +1,2 @@
-# google_analytics
-Various regex and Google Sheets tricks for managing Google Analytics
+# analytics
+Various regex and Google Sheets/Google Apps Script tricks for managing Google Analytics and other analytics sources
